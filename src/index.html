@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="articleManagement">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Article Management</title>
+
+    <!-- injector:css -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <!-- endinjector -->
+
+    <!-- injector:vendor -->
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="node_modules/lodash/lodash.js"></script>
+    <script src="node_modules/restangular/dist/restangular.js"></script>
+    <script src="node_modules/ngstorage/ngStorage.min.js"></script>
+    <!-- endinjector -->
+
+    <!-- injector:js -->
+    <script src="app/constant/index.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/app.routes.js"></script>
+    <script src="app/users/app.js"></script>
+    <script src="app/users/Signup/Signup.ctrl.js"></script>
+    <script src="app/users/Signup/Signup.service.js"></script>
+    <!-- endinjector -->
+</head>
+<body>
+    <a ui-sref="home" ui-sref-active="active">Home</a>
+    <a ui-sref="dashboard" ui-sref-active="active">Dashboard</a>
+    <div data-ui-view=""></div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+@use 'functions' as *;
+
+@mixin pxtorem($property, $value) {
+    #{$property}: pxToRem($value);
+}
