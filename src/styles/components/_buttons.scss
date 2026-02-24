@@ -1,4 +1,14 @@
+@use '../abstracts' as *;
+
 button {
-    border: 1px solid var(--color-border);
+    border: pxToRem(1) solid $color-border;
+    border-radius: pxToRem(10);
+    padding: pxToRem(5);
     cursor: pointer;
+    background-color: $color-primary;
+    color: $color-text-light;
+
+    &:hover {
+        background-color: $color-secondary;
+    }
 }

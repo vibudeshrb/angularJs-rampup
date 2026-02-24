@@ -1,0 +1,10 @@
+@use '../abstracts' as *;
+
+input,
+button {
+    font: inherit;
+}
+
+input {
+    border: pxToRem(1) solid $color-border ;
+}
