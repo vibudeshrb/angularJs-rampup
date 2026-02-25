@@ -1,0 +1,21 @@
+<div class="form-container">
+    <h2>Login Page</h2>
+    <form data-ng-submit="$login.loginUser()">
+        <div>
+            <label>Username</label>
+            <input type="text" data-ng-model="$login.user.username" />
+            <span data-ng-if="$login.usernameError"
+                >{{$login.usernameError}}</span
+            >
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" data-ng-model="$login.user.password" />
+            <span data-ng-if="$login.passwordError"
+                >{{$login.passwordError}}</span
+            >
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <a ui-sref="signup">Sign up</a>
+</div>

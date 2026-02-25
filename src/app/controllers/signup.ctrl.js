@@ -1,9 +1,9 @@
 angular.module('articleManagement').controller('SignUpCtrl', [
-    'registerService',
+    'UserService',
     '$state',
     'constant',
     '$localStorage',
-    function (registerService, $state, constant, $localStorage) {
+    function (UserService, $state, constant, $localStorage) {
         var $signup = this;
         $signup.user = {};
 
@@ -42,8 +42,7 @@ angular.module('articleManagement').controller('SignUpCtrl', [
 
         $signup.registerUser = function () {
             if ($signup.valid()) {
-                registerService
-                    .registerUser($signup.user)
+                UserService.registerUser($signup.user)
                     .then(function (res) {
                         if (res.success) {
                             $localStorage.token = res.data.token;

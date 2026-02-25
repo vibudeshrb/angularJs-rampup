@@ -4,11 +4,16 @@ const constant = {
         home: 'home',
         dashboard: 'dashboard',
         signup: 'signup',
+        login: 'login',
+        article: 'articles',
     },
     url: {
+        root: '/',
         home: '/home',
         dashboard: '/dashboard',
         signup: '/signup',
+        login: '/login',
+        article: '/articles',
     },
     BACKEND_URL: {
         USERS: {

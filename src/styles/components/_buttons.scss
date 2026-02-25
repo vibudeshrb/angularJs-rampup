@@ -3,7 +3,7 @@
 button {
     border: pxToRem(1) solid $color-border;
     border-radius: pxToRem(10);
-    padding: pxToRem(5);
+    padding: pxToRem(5, 10);
     cursor: pointer;
     background-color: $color-primary;
     color: $color-text-light;
