@@ -1,0 +1,27 @@
+@import '../abstracts';
+
+.login-page {
+    @include flex-center(center, center);
+    min-height: 100vh;
+
+    &__container {
+        padding: pxToRem(40);
+        width: 100%;
+        max-width: pxToRem(400);
+    }
+
+    &__title {
+        margin-bottom: pxToRem(20);
+        text-align: center;
+        font-size: pxToRem(24);
+        font-weight: $font-weight-bold;
+        color: $color-text;
+    }
+
+    &__link {
+        display: block;
+        margin-top: pxToRem(15);
+        text-align: center;
+        text-decoration: none;
+    }
+}

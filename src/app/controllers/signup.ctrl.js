@@ -1,9 +1,10 @@
 angular.module('articleManagement').controller('signupCtrl', [
-    'registerService',
+    'userService',
     '$state',
     'constant',
     '$localStorage',
-    function (registerService, $state, constant, $localStorage) {
+    'snackbarFactory',
+    function (userService, $state, constant, $localStorage, snackbarFactory) {
         var signup = this;
         signup.user = {};
 
@@ -42,7 +43,7 @@ angular.module('articleManagement').controller('signupCtrl', [
 
         signup.registerUser = function () {
             if (signup.valid()) {
-                registerService
+                userService
                     .registerUser(signup.user)
                     .then(function (res) {
                         if (res.success) {
@@ -51,9 +52,9 @@ angular.module('articleManagement').controller('signupCtrl', [
                         }
                     })
                     .catch(function (err) {
-                        signup.error = err.data.message;
+                        snackbarFactory.trigger(err.data.message, 'error');
                     });
             }
         };
-    },
+    }
 ]);

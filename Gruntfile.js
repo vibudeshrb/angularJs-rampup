@@ -8,22 +8,22 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         prettier: {
             options: {
-                configFile: '.prettierrc',
+                configFile: '.prettierrc'
             },
             files: {
                 src: [
                     'src/**/*.js',
                     'src/**/*.html',
                     '*.json',
-                    '!src/styles/styles.css',
-                ],
-            },
+                    '!src/styles/styles.css'
+                ]
+            }
         },
         copy: {
             app: {
                 src: 'src/index-base.html',
-                dest: 'src/index.html',
-            },
+                dest: 'src/index.html'
+            }
         },
         injector: {
             vendors: {
@@ -31,7 +31,7 @@ module.exports = function (grunt) {
                     addRootSlash: false,
                     ignorePath: '',
                     starttag: '<!-- injector:vendor -->',
-                    endtag: '<!-- endinjector -->',
+                    endtag: '<!-- endinjector -->'
                 },
                 files: {
                     'src/index.html': [
@@ -39,49 +39,49 @@ module.exports = function (grunt) {
                         'node_modules/angular-ui-router/release/angular-ui-router.js',
                         'node_modules/lodash/lodash.js',
                         'node_modules/restangular/dist/restangular.js',
-                        'node_modules/ngstorage/ngStorage.min.js',
-                    ],
-                },
+                        'node_modules/ngstorage/ngStorage.min.js'
+                    ]
+                }
             },
             app: {
                 options: {
                     addRootSlash: false,
-                    ignorePath: 'src/',
+                    ignorePath: 'src/'
                 },
                 files: {
                     'src/index.html': [
                         'src/styles/styles.css',
                         'src/app/constant/**/*.js',
                         'src/app/app.module.js',
-                        'src/app/**/*.js',
-                    ],
-                },
-            },
+                        'src/app/**/*.js'
+                    ]
+                }
+            }
         },
         sass: {
             options: {
                 implementation: sass,
                 sourceMap: true,
-                style: 'expanded',
+                style: 'expanded'
             },
             dist: {
                 files: {
-                    'src/styles/styles.css': 'src/styles/index.scss',
-                },
-            },
+                    'src/styles/styles.css': 'src/styles/index.scss'
+                }
+            }
         },
         ngAnnotate: {
             options: { singleQuotes: true },
             app: {
                 files: {
-                    'dist/app.annotated.js': ['src/app/**/*.js'],
-                },
-            },
+                    'dist/app.annotated.js': ['src/app/**/*.js']
+                }
+            }
         },
         uglify: {
             dist: {
-                files: { 'dist/app.min.js': ['dist/app.annotated.js'] },
-            },
+                files: { 'dist/app.min.js': ['dist/app.annotated.js'] }
+            }
         },
         jshint: {
             options: {
@@ -89,9 +89,9 @@ module.exports = function (grunt) {
                 browser: true,
                 globals: { angular: true, constant: true, _: true },
                 esversion: 6,
-                reporter: require('jshint-stylish'),
+                reporter: require('jshint-stylish')
             },
-            all: ['Gruntfile.js', 'src/**/*.js'],
+            all: ['Gruntfile.js', 'src/**/*.js']
         },
         connect: {
             server: {
@@ -107,14 +107,14 @@ module.exports = function (grunt) {
                             function (req, res, next) {
                                 res.setHeader(
                                     'Access-Control-Allow-Origin',
-                                    '*',
+                                    '*'
                                 );
                                 return next();
-                            },
+                            }
                         ].concat(middlewares);
-                    },
-                },
-            },
+                    }
+                }
+            }
         },
         watch: {
             inject: {
@@ -122,15 +122,15 @@ module.exports = function (grunt) {
                 tasks: ['copy:app', 'injector:vendors', 'injector:app'],
                 options: {
                     event: ['added', 'deleted'],
-                    livereload: true,
-                },
+                    livereload: true
+                }
             },
             js: {
                 files: ['src/app/**/*.js'],
                 options: {
                     event: ['changed'],
-                    livereload: true,
-                },
+                    livereload: true
+                }
             },
             sass: {
                 files: ['src/styles/**/*.scss'],
@@ -138,20 +138,20 @@ module.exports = function (grunt) {
                     'sass:dist',
                     'copy:app',
                     'injector:vendors',
-                    'injector:app',
+                    'injector:app'
                 ],
-                options: { livereload: true },
+                options: { livereload: true }
             },
             indexbase: {
                 files: ['src/index-base.html'],
                 tasks: ['copy:app', 'injector:vendors', 'injector:app'],
-                options: { livereload: true },
+                options: { livereload: true }
             },
             html: {
                 files: ['src/app/**/*.html', 'src/views/**/*.html'],
-                options: { livereload: true },
-            },
-        },
+                options: { livereload: true }
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -167,7 +167,7 @@ module.exports = function (grunt) {
     grunt.registerTask('inject', [
         'copy:app',
         'injector:vendors',
-        'injector:app',
+        'injector:app'
     ]);
 
     grunt.registerTask('default', [
@@ -175,7 +175,7 @@ module.exports = function (grunt) {
         'sass:dist',
         'inject',
         'connect',
-        'watch',
+        'watch'
     ]);
 
     grunt.registerTask('build', [
@@ -183,6 +183,6 @@ module.exports = function (grunt) {
         'sass:dist',
         'inject',
         'ngAnnotate',
-        'uglify',
+        'uglify'
     ]);
 };
