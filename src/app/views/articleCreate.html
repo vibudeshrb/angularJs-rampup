@@ -1,0 +1,28 @@
+<div class="article-form"> 
+    <h2 class="article-form__title">Create New Article</h2>
+
+    <form class="form" data-ng-submit="article.createArticle()">
+
+        <div class="form__field">
+            <label for="title" class="form__label">Title</label>
+            <input id="title" type="text" class="form__input" placeholder="Enter article title" data-ng-model="article.data.title" />
+        </div>
+
+        <div class="form__field">
+            <label for="shortDesc" class="form__label">Short Description</label>
+            <input id="shortDesc" type="text" class="form__input" placeholder="A brief summary" data-ng-model="article.data.shortDescription" />
+        </div>
+
+        <div class="form__field">
+            <label for="desc" class="form__label">Description</label>
+            <textarea id="desc" class="form__input" placeholder="Full article content" data-ng-model="article.data.description" rows="5"></textarea>
+        </div>
+
+        <div class="form__field">
+            <label for="tags" class="form__label">Tags</label>
+            <input id="tags" type="text" class="form__input" placeholder="e.g. tech, news, angular" data-ng-model="article.data.tags" />
+        </div>
+
+        <button type="submit" class="btn btn--primary">Create Article</button>
+    </form>
+</div>

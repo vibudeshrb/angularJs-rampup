@@ -33,7 +33,7 @@
     &--error {
         color: $color-text-light;
         &:hover {
-            background-color: darken($color: $color-success, $amount: 20);
+            background-color: darken($color: $color-error, $amount: 20);
         }
     }
 }

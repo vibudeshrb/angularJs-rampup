@@ -1,0 +1,12 @@
+<div class="article-detail">
+    <div class="article-detail__container">
+        <h3 class="article-detail__title">{{article.data.title}}</h3>
+        <h6 class="article-detail__short">{{article.data.shortDescription}}</h6>
+        <p class="article-detail__description">{{article.data.description}}</p>
+        <ul class="article-detail__tags">
+            <li data-ng-repeat="tag in article.data.tags">
+                <p>{{tag}}</p>
+            </li>
+        </ul>
+    </div>
+</div>

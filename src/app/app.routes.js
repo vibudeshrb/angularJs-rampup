@@ -41,7 +41,21 @@ angular
                 .state({
                     name: constant.state.article,
                     url: constant.url.article,
-                    template: '<h1>Articles</h1>'
+                    template: '<div ui-view></div>'
+                })
+                .state({
+                    name: constant.state.articleCreate,
+                    url: constant.url.articleCreate,
+                    templateUrl: constant.templateUrl.articleCreate,
+                    controller: 'articleCreateCtrl',
+                    controllerAs: 'article'
+                })
+                .state({
+                    name: constant.state.articleDetail,
+                    url: constant.url.articleDetail,
+                    templateUrl: constant.templateUrl.articleDetail,
+                    controller: 'articleDetailCtrl',
+                    controllerAs: 'article'
                 });
 
             $urlRouterProvider.when('/', '/articles');
@@ -52,7 +66,8 @@ angular
         '$localStorage',
         '$state',
         'constant',
-        function ($rootScope, $localStorage, $state, constant) {
+        'Restangular',
+        function ($rootScope, $localStorage, $state, constant, Restangular) {
             $rootScope.$on('$stateChangeStart', function (event, toState) {
                 var token = $localStorage.token;
                 var isAuthPage =
@@ -72,5 +87,28 @@ angular
                     return;
                 }
             });
+
+            Restangular.addFullRequestInterceptor(
+                function (
+                    element,
+                    operation,
+                    route,
+                    url,
+                    headers,
+                    params,
+                    httpConfig
+                ) {
+                    var token = $localStorage.token;
+                    if (token) {
+                        headers.Authorization = 'Bearer ' + $localStorage.token;
+                    }
+                    return {
+                        headers: headers,
+                        element: element,
+                        params: params,
+                        httpConfig: httpConfig
+                    };
+                }
+            );
         }
     ]);

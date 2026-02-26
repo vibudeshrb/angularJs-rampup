@@ -1,0 +1,42 @@
+@use '../abstracts' as *;
+
+.article-detail {
+    @include flex-center(center, start);
+    width: 100%;
+    min-height: 100vh;
+    padding: pxToRem(40, 0);
+
+    &__container {
+        padding: pxToRem(30);
+        width: 90%;
+        border: none;
+        border-radius: pxToRem(16);
+    }
+
+    &__title {
+        text-transform: uppercase;
+        font-size: pxToRem(24);
+        font-weight: 800;
+        letter-spacing: pxToRem(1);
+        color: $color-primary;
+        margin-bottom: pxToRem(8);
+        line-height: 1.2;
+    }
+
+    &__short {
+        font-size: pxToRem(14);
+        color: $color-secondary;
+        font-style: italic;
+        margin-bottom: pxToRem(20);
+        border-left: pxToRem(3) solid $color-primary;
+        padding-left: pxToRem(10);
+    }
+
+    &__description {
+        font-size: pxToRem(16);
+        line-height: 1.6;
+        margin-top: pxToRem(10);
+    }
+
+
+}
