@@ -1,0 +1,35 @@
+@use '../abstracts' as *;
+
+.article-detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: pxToRem(10, 20);
+        margin-top: pxToRem(40);
+        max-width: pxToRem(300);
+        border: pxToRem(1) solid $color-border;
+        border-radius: pxToRem(10);
+    }
+
+    &__title {
+        text-transform: uppercase;
+        font-size: pxToRem(15);
+        color: $color-primary;
+    }
+
+    &__short {
+        font-size: pxToRem(10);
+    }
+
+    &__description {
+        font-size: pxToRem(8);
+        margin-top: pxToRem(5);
+    }
+}

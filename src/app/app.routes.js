@@ -9,7 +9,7 @@ angular
             $stateProvider,
             $locationProvider,
             $urlRouterProvider,
-            constant,
+            constant
         ) {
             $locationProvider.html5Mode(true);
 
@@ -17,42 +17,58 @@ angular
                 .state({
                     name: constant.state.home,
                     url: constant.url.home,
-                    template: '<h3>Home</h3>',
+                    template: '<h3>Home</h3>'
                 })
                 .state({
                     name: constant.state.dashboard,
                     url: constant.url.dashboard,
-                    template: '<h3>Dashboard</h3>',
+                    template: '<h3>Dashboard</h3>'
                 })
                 .state({
                     name: constant.state.signup,
                     url: constant.url.signup,
                     controller: 'SignUpCtrl',
                     templateUrl: 'src/app/views/signup.html',
-                    controllerAs: '$signup',
+                    controllerAs: '$signup'
                 })
                 .state({
                     name: constant.state.login,
                     url: constant.url.login + '?next',
                     controller: 'loginCtrl',
                     templateUrl: 'src/app/views/login.html',
-                    controllerAs: '$login',
+                    controllerAs: '$login'
                 })
                 .state({
                     name: constant.state.article,
                     url: constant.url.article,
-                    template: '<h1>Articles</h1>',
+                    template: '<div ui-view></div>'
+                })
+                .state({
+                    name: 'articles.create',
+                    url: constant.url.create,
+                    templateUrl:
+                        'src/app/views/articleCreate.html',
+                    controller: 'articleCreateCtrl',
+                    controllerAs: '$article'
+                })
+                .state({
+                    name: 'articles.detail',
+                    url: '/:id',
+                    templateUrl:
+                        'src/app/views/articleDetail.html',
+                    controller: 'articleDetailController'
                 });
 
             $urlRouterProvider.when('/', '/articles');
-        },
+        }
     ])
     .run([
         '$rootScope',
         '$localStorage',
         '$state',
         'constant',
-        function ($rootScope, $localStorage, $state, constant) {
+        'Restangular',
+        function ($rootScope, $localStorage, $state, constant, Restangular) {
             $rootScope.$on('$stateChangeStart', function (event, toState) {
                 var token = $localStorage.token;
                 var isAuthPage =
@@ -61,7 +77,7 @@ angular
                 if (!token && !isAuthPage) {
                     event.preventDefault();
                     $state.go(constant.state.login, {
-                        next: toState.name,
+                        next: toState.name
                     });
                     return;
                 }
@@ -72,5 +88,28 @@ angular
                     return;
                 }
             });
-        },
+
+            Restangular.addFullRequestInterceptor(
+                function (
+                    element,
+                    operation,
+                    route,
+                    url,
+                    headers,
+                    params,
+                    httpConfig
+                ) {
+                    var token = $localStorage.token;
+                    if (token) {
+                        headers.Authorization = 'Bearer ' + $localStorage.token;
+                    }
+                    return {
+                        headers: headers,
+                        element: element,
+                        params: params,
+                        httpConfig: httpConfig
+                    };
+                }
+            );
+        }
     ]);

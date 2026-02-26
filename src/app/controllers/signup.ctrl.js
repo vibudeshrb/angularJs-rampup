@@ -54,5 +54,5 @@ angular.module('articleManagement').controller('SignUpCtrl', [
                     });
             }
         };
-    },
+    }
 ]);

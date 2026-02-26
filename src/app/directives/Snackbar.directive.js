@@ -7,7 +7,7 @@ angular.module('articleManagement').directive('snackbar', [
             templateUrl: 'src/app/views/snackbar.html',
             link: function (scope) {
                 scope.snack = SnackbarFactory;
-            },
+            }
         };
-    },
+    }
 ]);

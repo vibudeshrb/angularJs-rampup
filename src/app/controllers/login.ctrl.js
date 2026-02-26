@@ -41,5 +41,5 @@ angular.module('articleManagement').controller('loginCtrl', [
                     });
             }
         };
-    },
+    }
 ]);

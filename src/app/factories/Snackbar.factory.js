@@ -4,7 +4,7 @@ angular.module('articleManagement').factory('SnackbarFactory', [
         var sData = {
             message: '',
             type: '',
-            show: false,
+            show: false
         };
 
         return {
@@ -19,9 +19,9 @@ angular.module('articleManagement').factory('SnackbarFactory', [
                         sData.show = false;
                     },
                     3000,
-                    true,
+                    true
                 );
-            },
+            }
         };
-    },
+    }
 ]);

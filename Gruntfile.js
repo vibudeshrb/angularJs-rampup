@@ -8,24 +8,24 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         prettier: {
             options: {
-                configFile: '.prettierrc',
+                configFile: '.prettierrc'
             },
             files: {
                 src: [
                     'src/**/*.js',
                     'src/**/*.html',
                     '*.json',
-                    '!src/styles/styles.css', // Don't format compiled CSS
-                ],
-            },
+                    '!src/styles/styles.css' // Don't format compiled CSS
+                ]
+            }
         },
 
         // ── Copy index-base.html → index.html (index.html is gitignored) ──
         copy: {
             app: {
                 src: 'src/index-base.html',
-                dest: 'src/index.html',
-            },
+                dest: 'src/index.html'
+            }
         },
 
         // ── Inject everything into index.html (no hardcoded tags anywhere) ─
@@ -36,7 +36,7 @@ module.exports = function (grunt) {
                     addRootSlash: false,
                     ignorePath: '',
                     starttag: '<!-- injector:vendor -->',
-                    endtag: '<!-- endinjector -->',
+                    endtag: '<!-- endinjector -->'
                 },
                 files: {
                     'src/index.html': [
@@ -44,25 +44,25 @@ module.exports = function (grunt) {
                         'node_modules/angular-ui-router/release/angular-ui-router.js',
                         'node_modules/lodash/lodash.js',
                         'node_modules/restangular/dist/restangular.js',
-                        'node_modules/ngstorage/ngStorage.min.js',
-                    ],
-                },
+                        'node_modules/ngstorage/ngStorage.min.js'
+                    ]
+                }
             },
             // 2. App CSS + JS
             app: {
                 options: {
                     addRootSlash: false,
-                    ignorePath: 'src/',
+                    ignorePath: 'src/'
                 },
                 files: {
                     'src/index.html': [
                         'src/styles/styles.css',
                         'src/app/constant/**/*.js',
                         'src/app/app.module.js',
-                        'src/app/**/*.js',
-                    ],
-                },
-            },
+                        'src/app/**/*.js'
+                    ]
+                }
+            }
         },
 
         // ── Sass ──────────────────────────────────────────────────────────
@@ -70,13 +70,13 @@ module.exports = function (grunt) {
             options: {
                 implementation: sass,
                 sourceMap: true,
-                style: 'expanded',
+                style: 'expanded'
             },
             dist: {
                 files: {
-                    'src/styles/styles.css': 'src/styles/index.scss',
-                },
-            },
+                    'src/styles/styles.css': 'src/styles/index.scss'
+                }
+            }
         },
 
         // ── ng-annotate ───────────────────────────────────────────────────
@@ -84,16 +84,16 @@ module.exports = function (grunt) {
             options: { singleQuotes: true },
             app: {
                 files: {
-                    'dist/app.annotated.js': ['src/app/**/*.js'],
-                },
-            },
+                    'dist/app.annotated.js': ['src/app/**/*.js']
+                }
+            }
         },
 
         // ── Uglify ────────────────────────────────────────────────────────
         uglify: {
             dist: {
-                files: { 'dist/app.min.js': ['dist/app.annotated.js'] },
-            },
+                files: { 'dist/app.min.js': ['dist/app.annotated.js'] }
+            }
         },
 
         // ── JSHint ────────────────────────────────────────────────────────
@@ -103,9 +103,9 @@ module.exports = function (grunt) {
                 browser: true,
                 globals: { angular: true, constant: true, _: true },
                 esversion: 6,
-                reporter: require('jshint-stylish'),
+                reporter: require('jshint-stylish')
             },
-            all: ['Gruntfile.js', 'src/**/*.js'],
+            all: ['Gruntfile.js', 'src/**/*.js']
         },
 
         // ── Connect dev server ────────────────────────────────────────────
@@ -126,11 +126,11 @@ module.exports = function (grunt) {
                                     '*'
                                 );
                                 return next();
-                            },
+                            }
                         ].concat(middlewares);
-                    },
-                },
-            },
+                    }
+                }
+            }
         },
 
         // ── Watch ─────────────────────────────────────────────────────────
@@ -141,16 +141,16 @@ module.exports = function (grunt) {
                 tasks: ['copy:app', 'injector:vendors', 'injector:app'],
                 options: {
                     event: ['added', 'deleted'],
-                    livereload: true,
-                },
+                    livereload: true
+                }
             },
             // JS changed → livereload only (tags already in index.html)
             js: {
                 files: ['src/app/**/*.js'],
                 options: {
                     event: ['changed'],
-                    livereload: true,
-                },
+                    livereload: true
+                }
             },
             // SCSS changed → recompile then update injected <link> tags
             sass: {
@@ -159,22 +159,22 @@ module.exports = function (grunt) {
                     'sass:dist',
                     'copy:app',
                     'injector:vendors',
-                    'injector:app',
+                    'injector:app'
                 ],
-                options: { livereload: true },
+                options: { livereload: true }
             },
             // index-base.html changed → rebuild index.html
             indexbase: {
                 files: ['src/index-base.html'],
                 tasks: ['copy:app', 'injector:vendors', 'injector:app'],
-                options: { livereload: true },
+                options: { livereload: true }
             },
             // Other HTML changed → livereload
             html: {
                 files: ['src/app/**/*.html', 'src/views/**/*.html'],
-                options: { livereload: true },
-            },
-        },
+                options: { livereload: true }
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -191,7 +191,7 @@ module.exports = function (grunt) {
     grunt.registerTask('inject', [
         'copy:app',
         'injector:vendors',
-        'injector:app',
+        'injector:app'
     ]);
 
     // serve: lint → sass → inject → start server → watch
@@ -200,7 +200,7 @@ module.exports = function (grunt) {
         'sass:dist',
         'inject',
         'connect',
-        'watch',
+        'watch'
     ]);
 
     // build: full production build
@@ -209,6 +209,6 @@ module.exports = function (grunt) {
         'sass:dist',
         'inject',
         'ngAnnotate',
-        'uglify',
+        'uglify'
     ]);
 };

@@ -6,25 +6,27 @@ const constant = {
         signup: 'signup',
         login: 'login',
         article: 'articles',
+        create: 'create'
     },
     url: {
-        root: '/',
         home: '/home',
         dashboard: '/dashboard',
         signup: '/signup',
         login: '/login',
         article: '/articles',
+        create: '/create'
     },
     BACKEND_URL: {
         USERS: {
             user: 'users',
             register: 'register',
             login: 'login',
-        },
+            article: 'articles'
+        }
     },
     REGEX: {
         PASSWORD: /([^a-zA-Z0-9].*[^a-zA-Z0-9])/,
-        EMAIL: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        EMAIL: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     },
     FORM_ERROR_MESSAGES: {
         USERNAME_REQUIRED: 'Username required',
@@ -32,6 +34,6 @@ const constant = {
         PASSWORD_INVALID:
             'Password must contain 8 characters and two special characters',
         EMAIL_REQUIRED: 'Email required',
-        EMAIL_INVALID: 'Invalid email',
-    },
+        EMAIL_INVALID: 'Invalid email'
+    }
 };
