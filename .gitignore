@@ -6,7 +6,6 @@ src/styles/styles.css.map
 /.sass-cache
 gruntconfig.json
 src/index.html
-yarn.lock
 npm-debug.log
 npm-debug.log.*
 debug.log
