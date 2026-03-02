@@ -1,7 +1,7 @@
-const myApp = angular.module("articleManagement", [
-  "ui.router",
-  "restangular",
-  "ngStorage",
+const myApp = angular.module('articleManagement', [
+    'ui.router',
+    'restangular',
+    'ngStorage',
 ]);
 
 myApp.constant('constant', constant);

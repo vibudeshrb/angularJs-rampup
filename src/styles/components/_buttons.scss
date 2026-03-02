@@ -1,14 +1,39 @@
-@use '../abstracts' as *;
+@import '../abstracts';
 
-button {
-    border: pxToRem(1) solid $color-border;
-    border-radius: pxToRem(10);
-    padding: pxToRem(5);
-    cursor: pointer;
+.btn {
     background-color: $color-primary;
-    color: $color-text-light;
+    border: none;
+    padding: pxToRem(10, 30);
+    border-radius: pxToRem(52);
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 
-    &:hover {
-        background-color: $color-secondary;
+    &--primary {
+        color: $color-text-light;
+        &:hover {
+            background-color: darken($color: $color-primary, $amount: 20);
+        }
+    }
+
+    &--secondary {
+        color: $color-text-light;
+        &:hover {
+            background-color: darken($color: $color-secondary, $amount: 20);
+        }
+    }
+
+    &--success {
+        color: $color-text-light;
+        &:hover {
+            background-color: darken($color: $color-success, $amount: 20);
+        }
+    }
+    &--error {
+        color: $color-text-light;
+        &:hover {
+            background-color: darken($color: $color-success, $amount: 20);
+        }
     }
 }
