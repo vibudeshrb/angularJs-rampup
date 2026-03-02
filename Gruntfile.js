@@ -57,6 +57,8 @@ module.exports = function (grunt) {
                 files: {
                     'src/index.html': [
                         'src/styles/styles.css',
+                        'src/app/constant/**/*.js',
+                        'src/app/app.module.js',
                         'src/app/**/*.js',
                     ],
                 },

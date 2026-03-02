@@ -33,6 +33,7 @@
         "angular": "^1.8.3",
         "angular-ui-router": "^0.4.3",
         "lodash": "^4.17.23",
+        "ngstorage": "^0.3.11",
         "restangular": "^1.6.1"
     }
 }

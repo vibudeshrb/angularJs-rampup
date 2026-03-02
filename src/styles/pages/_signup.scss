@@ -1,34 +1,62 @@
 @use '../abstracts' as *;
 
-.signup-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.signup {
+    @include flex-center;
     height: 90vh;
     width: 100%;
-    gap: pxToRem(20);
+    padding: pxToRem(20);
+    background-color: $color-bg;
 
-    span {
-        color: $color-error;
+    &__content {
+        width: 100%;
+        max-width: pxToRem(400);
     }
 
-    form {
+    &__title {
+        text-align: center;
+        margin-bottom: pxToRem(30);
+        font-size: pxToRem(28);
+        font-weight: $font-weight-bold;
+        color: $color-text;
+    }
+
+    &__form {
+        @include flex-center;
+        gap: pxToRem(20);
+    }
+
+    &__field {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: pxToRem(10);
-        max-width: pxToRem(200);
-        width: 100%;
+        gap: pxToRem(8);
     }
 
-    input {
-        width: 100%;
-        padding: pxToRem(6);
+    &__label {
+        font-size: 14px;
+        font-weight: $font-weight-bold;
+        color: $color-text;
+        margin-bottom: pxToRem(4);
     }
 
-    div {
+    &__input {
         width: 100%;
+        padding: pxToRem(8);
+        border: $border-grey;
+        border-radius: pxToRem(5);
+        font-size: $font-size-base;
+        font-family: $font-family-base;
+        transition: border-color 0.2s ease;
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+            box-shadow: 0 0 0 pxToRem(2) rgba($color-primary, 0.1);
+        }
+    }
+
+    &__error {
+        font-size: 13px;
+        color: $color-error;
     }
 }
