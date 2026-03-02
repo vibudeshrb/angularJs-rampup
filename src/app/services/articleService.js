@@ -16,8 +16,12 @@ angular.module('articleManagement').service('articleService', [
             return articleApi.post(this.format(article));
         };
 
-        this.listArticle = function () {
-            return articleApi.get();
+        this.listArticle = function (page, pageSize, filter) {
+            var params = { page: page, pageSize: pageSize };
+            if (filter) {
+                params.search = filter;
+            }
+            return articleApi.one('').get(params);
         };
 
         this.getArticle = function (id) {

@@ -5,12 +5,16 @@ angular
         '$locationProvider',
         '$urlRouterProvider',
         'constant',
+        '$urlMatcherFactoryProvider',
         function (
             $stateProvider,
             $locationProvider,
             $urlRouterProvider,
-            constant
+            constant,
+            $urlMatcherFactoryProvider
         ) {
+            $urlMatcherFactoryProvider.strictMode(false);
+
             $locationProvider.html5Mode(true);
 
             $stateProvider
@@ -41,7 +45,15 @@ angular
                 .state({
                     name: constant.state.article,
                     url: constant.url.article,
+                    abstract: true,
                     template: '<div ui-view></div>'
+                })
+                .state({
+                    name: constant.state.articleList,
+                    url: constant.url.articleList,
+                    templateUrl: constant.templateUrl.articleList,
+                    controller: 'articleListCtrl',
+                    params: { showWelcome: false }
                 })
                 .state({
                     name: constant.state.articleCreate,
@@ -83,7 +95,7 @@ angular
 
                 if (token && isAuthPage) {
                     event.preventDefault();
-                    $state.go(constant.state.article);
+                    $state.go(constant.state.articleList);
                     return;
                 }
             });

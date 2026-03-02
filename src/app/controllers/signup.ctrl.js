@@ -48,7 +48,7 @@ angular.module('articleManagement').controller('signupCtrl', [
                     .then(function (res) {
                         if (res.success) {
                             $localStorage.token = res.data.token;
-                            $state.go(constant.state.dashboard);
+                            $state.go(constant.state.articleList);
                         }
                     })
                     .catch(function (err) {

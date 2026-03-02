@@ -1,0 +1,21 @@
+<div class="modal" data-ng-if="showWelcomeModal">
+    <div class="modal__backdrop" data-ng-click="closeWelcomeModal()"></div>
+    <div class="modal__dialog">
+        <div class="modal__header">
+            <h2 class="modal__title">Welcome back!</h2>
+            <button class="modal__close" data-ng-click="closeWelcomeModal()">
+                &times;
+            </button>
+        </div>
+        <div class="modal__body">
+            <p class="modal__message">
+                You have successfully logged in. Explore all our articles below.
+            </p>
+        </div>
+        <div class="modal__footer">
+            <button class="modal__btn" data-ng-click="closeWelcomeModal()">
+                Start Reading
+            </button>
+        </div>
+    </div>
+</div>
