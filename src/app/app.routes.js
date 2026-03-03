@@ -5,12 +5,16 @@ angular
         '$locationProvider',
         '$urlRouterProvider',
         'constant',
+        '$urlMatcherFactoryProvider',
         function (
             $stateProvider,
             $locationProvider,
             $urlRouterProvider,
-            constant
+            constant,
+            $urlMatcherFactoryProvider
         ) {
+            $urlMatcherFactoryProvider.strictMode(false);
+
             $locationProvider.html5Mode(true);
 
             $stateProvider
@@ -41,21 +45,28 @@ angular
                 .state({
                     name: constant.state.article,
                     url: constant.url.article,
+                    abstract: true,
                     template: '<div ui-view></div>'
+                })
+                .state({
+                    name: 'articles.list',
+                    url: constant.url.root,
+                    templateUrl: 'src/app/views/articleList.html',
+                    controller: 'articleListCtrl',
+                    controllerAs: '$article',
+                    params: { showWelcome: false }
                 })
                 .state({
                     name: 'articles.create',
                     url: constant.url.create,
-                    templateUrl:
-                        'src/app/views/articleCreate.html',
+                    templateUrl: 'src/app/views/articleCreate.html',
                     controller: 'articleCreateCtrl',
                     controllerAs: '$article'
                 })
                 .state({
                     name: 'articles.detail',
                     url: '/:id',
-                    templateUrl:
-                        'src/app/views/articleDetail.html',
+                    templateUrl: 'src/app/views/articleDetail.html',
                     controller: 'articleDetailController'
                 });
 
@@ -84,7 +95,9 @@ angular
 
                 if (token && isAuthPage) {
                     event.preventDefault();
-                    $state.go(constant.state.article);
+                    $state.go(
+                        `${constant.state.article}.${constant.state.list}`
+                    );
                     return;
                 }
             });

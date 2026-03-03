@@ -1,0 +1,10 @@
+<div
+    class="article-card"
+    data-ng-click="detail.onClick({id:detail.article.id})"
+>
+    <div class="article-card__body">
+        <h4 class="article-card__title">{{detail.article.title}}</h4>
+        <p class="article-card__short">{{detail.article.shortDescription}}</p>
+        <tag-chip tags="detail.article.tags"></tag-chip>
+    </div>
+</div>

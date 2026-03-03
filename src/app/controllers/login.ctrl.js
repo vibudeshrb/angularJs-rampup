@@ -34,7 +34,10 @@ angular.module('articleManagement').controller('loginCtrl', [
                         if ($state.params.next) {
                             $state.go($state.params.next);
                         }
-                        $state.go(constant.state.articles);
+                        $state.go(
+                            `${constant.state.article}.${constant.state.list}`,
+                            { showWelcome: true }
+                        );
                     })
                     .catch(function (err) {
                         SnackbarFactory.trigger(err.data.message, 'error');

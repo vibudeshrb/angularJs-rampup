@@ -1,0 +1,36 @@
+@use '../abstracts' as *;
+
+.article-card {
+    display: flex;
+    flex-direction: column;
+    border: pxToRem(1) solid $color-border;
+    border-radius: pxToRem(10);
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 pxToRem(4) pxToRem(16) rgba(0, 0, 0, 0.08);
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: pxToRem(6);
+        padding: pxToRem(14, 16);
+    }
+
+    &__title {
+        margin: 0;
+        font-size: pxToRem(15);
+        font-weight: $font-weight-bold;
+        color: $color-primary;
+        text-transform: uppercase;
+    }
+
+    &__short {
+        margin: 0;
+        font-size: pxToRem(12);
+        color: $color-text;
+    }
+}

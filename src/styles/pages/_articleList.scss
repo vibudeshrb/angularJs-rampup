@@ -1,0 +1,21 @@
+@use '../abstracts' as *;
+
+.article-list {
+    padding: pxToRem(24);
+
+    &__search-input {
+        width: 100%;
+        margin-bottom: pxToRem(16);
+    }
+
+    &__grid {
+        display: flex;
+        flex-direction: column;
+        gap: pxToRem(16);
+    }
+
+    &__sentinel {
+        height: pxToRem(1);
+        visibility: hidden;
+    }
+}

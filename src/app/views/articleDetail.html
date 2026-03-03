@@ -3,10 +3,6 @@
         <h3 class="article-detail__title">{{data.title}}</h3>
         <h6 class="article-detail__short">{{data.shortDescription}}</h6>
         <p class="article-detail__description">{{data.description}}</p>
-        <ul class="article-detail__tags">
-            <li data-ng-repeat="tag in data.tags">
-                <p>{{tag}}</p>
-            </li>
-        </ul>
+        <tag-chip tags="data.tags"></tag-chip>
     </div>
 </div>

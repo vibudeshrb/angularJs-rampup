@@ -6,15 +6,18 @@ const constant = {
         signup: 'signup',
         login: 'login',
         article: 'articles',
-        create: 'create'
+        create: 'create',
+        list: 'list'
     },
     url: {
+        root: '',
         home: '/home',
         dashboard: '/dashboard',
         signup: '/signup',
         login: '/login',
         article: '/articles',
-        create: '/create'
+        create: '/create',
+        list: '/list'
     },
     BACKEND_URL: {
         USERS: {

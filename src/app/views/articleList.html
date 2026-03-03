@@ -1,0 +1,37 @@
+<div class="article-list">
+    <ng-include src="'src/app/views/welcomeModal.html'"></ng-include>
+
+    <div class="article-list__header">
+        <h1 class="article-list__title">Articles</h1>
+    </div>
+
+    <div class="article-list__search">
+        <input
+            class="article-list__search-input"
+            type="text"
+            data-ng-model="filter"
+            placeholder="Search articles…"
+        />
+    </div>
+
+    <div class="article-list__grid">
+        <div class="article-list__item" data-ng-repeat="article in articles">
+            <article-card
+                article="article"
+                on-click="goToArticle(id)"
+            ></article-card>
+        </div>
+
+        <p
+            class="article-list__empty"
+            data-ng-if="!isLoading && articles.length === 0"
+        >
+            No articles found.
+        </p>
+    </div>
+
+    <div
+        class="article-list__sentinel"
+        intersection-observer="loadArticles(1)"
+    ></div>
+</div>
