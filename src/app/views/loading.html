@@ -1,0 +1,11 @@
+<div
+    class="loading"
+    data-ng-if="$ctrl.show"
+    role="status"
+    aria-live="polite"
+>
+    <div class="loading__content">
+        <span class="loading__spinner" aria-hidden="true"></span>
+        <span class="loading__text">{{ $ctrl.message || 'Loading...' }}</span>
+    </div>
+</div>

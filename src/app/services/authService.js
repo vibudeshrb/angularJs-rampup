@@ -14,7 +14,7 @@ angular.module('articleManagement').service('userService', [
 
         this.logout = function () {
             delete $localStorage.token;
-            $state.go(constant.state.articles);
+            $state.go(constant.state.login);
         };
     }
 ]);

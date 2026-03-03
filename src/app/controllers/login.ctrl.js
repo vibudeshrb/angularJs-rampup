@@ -29,6 +29,7 @@ angular.module('articleManagement').controller('loginCtrl', [
 
         login.loginUser = function () {
             if (login.valid()) {
+                login.isLoading = true;
                 userService
                     .login(login.user)
                     .then(function (res) {
@@ -39,14 +40,17 @@ angular.module('articleManagement').controller('loginCtrl', [
                         );
                         if ($state.params.next) {
                             $state.go($state.params.next);
+                            return;
                         }
-                        $state.go(
-                            `${constant.state.article}.${constant.state.list}`,
-                            { showWelcome: true }
-                        );
+                        $state.go(constant.state.articleList, {
+                            showWelcome: true
+                        });
                     })
                     .catch(function (err) {
                         snackbarFactory.trigger(err.data.message, 'error');
+                    })
+                    .finally(function () {
+                        login.isLoading = false;
                     });
             }
         };

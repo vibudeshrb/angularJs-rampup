@@ -1,4 +1,10 @@
 <div class="signup">
+    <loading-spinner
+        class="loading-spinner--full-page"
+        show="signup.isLoading"
+        message="Signing up..."
+    ></loading-spinner>
+
     <div class="signup__content">
         <h2 class="signup__title">Sign Up</h2>
 
@@ -45,14 +51,7 @@
                 </span>
             </div>
 
-            <span
-                class="form__error form__error--form"
-                data-ng-if="signup.error"
-            >
-                {{signup.error}}
-            </span>
-
-            <button type="submit" class="btn btn--primary">
+            <button type="submit" class="btn btn--primary" data-ng-disabled="signup.isLoading">
                 Sign Up
             </button>
             <a ui-sref="login">Log In</a>

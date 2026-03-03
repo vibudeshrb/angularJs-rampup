@@ -103,7 +103,7 @@ module.exports = function (grunt) {
                     index: 'index.html',
                     middleware: function (connect, options, middlewares) {
                         return [
-                            modRewrite(['^[^\\.]*$ /index.html [L]']),
+                            modRewrite(['^[^\\.?]*(\\?.*)?$ /index.html [L]']),
                             function (req, res, next) {
                                 res.setHeader(
                                     'Access-Control-Allow-Origin',

@@ -15,6 +15,11 @@
     </div>
 
     <div class="article-list__grid">
+        <loading-spinner
+            show="isLoading"
+            message="Loading articles..."
+        ></loading-spinner>
+
         <div class="article-list__item" data-ng-repeat="article in articles">
             <article-card
                 article="article"

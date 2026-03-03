@@ -1,0 +1,76 @@
+@use '../abstracts/' as *;
+
+.navbar {
+    @include flex-center(center, space-between);
+    background-color: $color-bg;
+    border-bottom: $border-grey;
+    padding: pxToRem(12, 20);
+    font-family: $font-family-primary;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 pxToRem(2) pxToRem(8) rgba(0, 0, 0, 0.06);
+
+    &__list {
+        @include flex-center;
+        list-style: none;
+        margin: pxToRem(10, 20);
+        padding: 0;
+        flex: 1;
+        gap: pxToRem(20);
+    }
+
+    &__item {
+        @include flex-center();
+        cursor: pointer;
+        text-decoration: none;
+
+        &--active {
+            border-bottom-color: $color-primary;
+
+            .navbar__link {
+                color: $color-primary;
+                font-weight: $font-weight-bold;
+            }
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $color-text;
+        font-size: pxToRem(14);
+
+        &:hover {
+            color: $color-secondary;
+            text-decoration: none;
+        }
+    }
+
+    &__button {
+        @include flex-center();
+        background: transparent;
+        border: $border-black;
+        color: $color-text;
+        font-weight: $font-weight-regular;
+        padding: pxToRem(5, 20);
+        cursor: pointer;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: $color-primary;
+            color: $color-text-light;
+            border-color: $color-primary;
+        }
+
+        &--logout {
+            border-color: $color-error;
+            color: $color-error;
+
+            &:hover {
+                background: $color-error;
+                color: $color-text-light;
+            }
+        }
+    }
+}

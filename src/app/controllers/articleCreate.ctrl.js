@@ -38,6 +38,7 @@ angular.module('articleManagement').controller('articleCreateCtrl', [
                 return;
             }
 
+            article.isLoading = true;
             articleService
                 .createArticle(article.data)
                 .then(function (res) {
@@ -51,6 +52,9 @@ angular.module('articleManagement').controller('articleCreateCtrl', [
                         err.data.message || 'Server Error',
                         'error'
                     );
+                })
+                .finally(function () {
+                    article.isLoading = false;
                 });
         };
     }

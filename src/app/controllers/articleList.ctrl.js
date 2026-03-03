@@ -20,7 +20,6 @@ angular.module('articleManagement').controller('articleListCtrl', [
         }
 
         $scope.closeWelcomeModal = function () {
-            console.log(1)
             $scope.showWelcomeModal = false;
         };
 
