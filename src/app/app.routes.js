@@ -15,6 +15,13 @@ angular.module('articleManagement').config([
                 name: constant.state.dashboard,
                 url: constant.url.dashboard,
                 template: '<h3>Dashboard</h3>',
+            })
+            .state({
+                name: constant.state.signup,
+                url: constant.url.signup,
+                controller: 'signupCtrl',
+                templateUrl: constant.templateUrl.signup,
+                controllerAs: 'signup',
             });
     },
 ]);

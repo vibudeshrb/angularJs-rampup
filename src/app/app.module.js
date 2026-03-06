@@ -1,4 +1,8 @@
-const myApp = angular.module('articleManagement', ['ui.router', 'restangular']);
+const myApp = angular.module('articleManagement', [
+    'ui.router',
+    'restangular',
+    'ngStorage',
+]);
 
 myApp.constant('constant', constant);
 
