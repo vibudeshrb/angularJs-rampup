@@ -1,7 +1,7 @@
 const myApp = angular.module('articleManagement', [
     'ui.router',
     'restangular',
-    'ngStorage',
+    'ngStorage'
 ]);
 
 myApp.constant('constant', constant);
@@ -11,5 +11,5 @@ myApp.config([
     'RestangularProvider',
     function (constant, RestangularProvider) {
         RestangularProvider.setBaseUrl(constant.apiBaseUrl);
-    },
+    }
 ]);

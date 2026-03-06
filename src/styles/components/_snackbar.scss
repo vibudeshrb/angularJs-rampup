@@ -1,0 +1,20 @@
+@use '../abstracts' as *;
+
+.snackbar-container {
+    display: none;
+    padding: pxToRem(5, 8);
+    background-color: $color-success;
+    color: $color-text-light;
+    position: absolute;
+    top: pxToRem(10);
+    right: pxToRem(10);
+    border-radius: pxToRem(2);
+
+    &.visible {
+        display: block;
+    }
+
+    &.error {
+        background-color: $color-error;
+    }
+}

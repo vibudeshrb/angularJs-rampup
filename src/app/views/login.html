@@ -1,0 +1,30 @@
+<div class="login-page">
+    <div class="login-page__container">
+        <h2 class="login-page__title">Login Page</h2>
+        
+        <form class="form" data-ng-submit="login.loginUser()">
+            <div class="form__field">
+                <label class="form__label">Username</label>
+                <input type="text" class="form__input" data-ng-model="login.user.username" />
+                <span class="form__error" data-ng-if="login.usernameError">
+                    {{login.usernameError}}
+                </span>
+            </div>
+
+            <div class="form__field">
+                <label class="form__label">Password</label>
+                <input type="password" class="form__input" data-ng-model="login.user.password" />
+                <span class="form__error" data-ng-if="login.passwordError">
+                    {{login.passwordError}}
+                </span>
+            </div>
+
+            <button type="submit" class="btn btn--primary form__submit">
+                Login
+            </button>
+                    <a ui-sref="signup" class="login__link">Sign up</a>
+
+        </form>
+
+    </div>
+</div>

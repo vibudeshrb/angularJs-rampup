@@ -2,59 +2,60 @@
     <div class="signup__content">
         <h2 class="signup__title">Sign Up</h2>
 
-        <form class="signup__form" data-ng-submit="signup.registerUser()">
-            <div class="signup__field">
-                <label class="signup__label" for="username">Username</label>
+        <form class="form" data-ng-submit="signup.registerUser()">
+            <div class="form__field">
+                <label class="form__label" for="username">Username</label>
                 <input
                     id="username"
-                    class="signup__input"
+                    class="form__input"
                     type="text"
                     placeholder="Enter your username"
                     data-ng-model="signup.user.username"
                 />
-                <span class="signup__error" data-ng-if="signup.usernameError">
+                <span class="form__error" data-ng-if="signup.usernameError">
                     {{signup.usernameError}}
                 </span>
             </div>
 
-            <div class="signup__field">
-                <label class="signup__label" for="email">Email</label>
+            <div class="form__field">
+                <label class="form__label" for="email">Email</label>
                 <input
                     id="email"
-                    class="signup__input"
+                    class="form__input"
                     type="email"
                     placeholder="Enter your email"
                     data-ng-model="signup.user.email"
                 />
-                <span class="signup__error" data-ng-if="signup.emailError">
+                <span class="form__error" data-ng-if="signup.emailError">
                     {{signup.emailError}}
                 </span>
             </div>
 
-            <div class="signup__field">
-                <label class="signup__label" for="password">Password</label>
+            <div class="form__field">
+                <label class="form__label" for="password">Password</label>
                 <input
                     id="password"
-                    class="signup__input"
+                    class="form__input"
                     type="password"
                     placeholder="Enter your password"
                     data-ng-model="signup.user.password"
                 />
-                <span class="signup__error" data-ng-if="signup.passwordError">
+                <span class="form__error" data-ng-if="signup.passwordError">
                     {{signup.passwordError}}
                 </span>
             </div>
 
             <span
-                class="signup__error signup__error--form"
+                class="form__error form__error--form"
                 data-ng-if="signup.error"
             >
                 {{signup.error}}
             </span>
 
-            <button type="submit" class="btn btn--primary signup__button">
+            <button type="submit" class="btn btn--primary">
                 Sign Up
             </button>
+            <a ui-sref="login">Log In</a>
         </form>
     </div>
 </div>
