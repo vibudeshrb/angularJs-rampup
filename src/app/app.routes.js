@@ -19,16 +19,6 @@ angular
 
             $stateProvider
                 .state({
-                    name: constant.state.home,
-                    url: constant.url.home,
-                    template: '<h3>Home</h3>'
-                })
-                .state({
-                    name: constant.state.dashboard,
-                    url: constant.url.dashboard,
-                    template: '<h3>Dashboard</h3>'
-                })
-                .state({
                     name: constant.state.signup,
                     url: constant.url.signup,
                     controller: 'signupCtrl',
@@ -46,7 +36,9 @@ angular
                     name: constant.state.article,
                     url: constant.url.article,
                     abstract: true,
-                    template: '<div ui-view></div>'
+                    template:
+                        '<navigation-menu data="menu"></navigation-menu><div ui-view></div>',
+                    controller: 'articleCtrl'
                 })
                 .state({
                     name: constant.state.articleList,
@@ -80,6 +72,8 @@ angular
         'constant',
         'Restangular',
         function ($rootScope, $localStorage, $state, constant, Restangular) {
+            $rootScope.history = [];
+            $rootScope.isBack = false;
             $rootScope.$on('$stateChangeStart', function (event, toState) {
                 var token = $localStorage.token;
                 var isAuthPage =
@@ -99,6 +93,22 @@ angular
                     return;
                 }
             });
+
+            $rootScope.$on(
+                '$stateChangeSuccess',
+                function (event, toState, toParams, fromState, fromParams) {
+                    if ($rootScope.isBack) {
+                        $rootScope.isBack = false;
+                        return;
+                    }
+                    if (fromState.name) {
+                        $rootScope.history.push({
+                            name: fromState.name,
+                            params: fromParams
+                        });
+                    }
+                }
+            );
 
             Restangular.addFullRequestInterceptor(
                 function (

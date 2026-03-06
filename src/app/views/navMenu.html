@@ -1,0 +1,22 @@
+<nav class="navbar">
+    <button class="navbar__button" data-ng-click="nav.goBack()">
+       Go Back
+    </button>
+
+    <ul class="navbar__list">
+        <li
+            class="navbar__item"
+            data-ng-repeat="item in nav.data"
+            ui-sref-active="navbar__item--active"
+        >
+            <a class="navbar__link" ui-sref="{{item.state}}"> {{item.name}} </a>
+        </li>
+    </ul>
+
+    <button
+        class="navbar__button navbar__button--logout"
+        data-ng-click="nav.logout()"
+    >
+        Logout
+    </button>
+</nav>

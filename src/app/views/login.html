@@ -1,4 +1,10 @@
 <div class="login-page">
+    <loading-spinner
+        class="loading-spinner--full-page"
+        show="login.isLoading"
+        message="Logging in..."
+    ></loading-spinner>
+
     <div class="login-page__container">
         <h2 class="login-page__title">Login Page</h2>
         
@@ -19,7 +25,11 @@
                 </span>
             </div>
 
-            <button type="submit" class="btn btn--primary form__submit">
+            <button
+                type="submit"
+                class="btn btn--primary form__submit"
+                data-ng-disabled="login.isLoading"
+            >
                 Login
             </button>
             <a ui-sref="signup" class="login__link">Sign up</a>

@@ -1,4 +1,10 @@
 <div class="article-form">
+    <loading-spinner
+        class="loading-spinner--full-page"
+        show="article.isLoading"
+        message="Creating article..."
+    ></loading-spinner>
+
     <h2 class="article-form__title">Create New Article</h2>
 
     <form class="form" data-ng-submit="article.createArticle()">
@@ -23,6 +29,12 @@
             <input id="tags" type="text" class="form__input" placeholder="e.g. tech, news, angular" data-ng-model="article.data.tags" />
         </div>
 
-        <button type="submit" class="btn btn--primary">Create Article</button>
+        <button
+            type="submit"
+            class="btn btn--primary"
+            data-ng-disabled="article.isLoading"
+        >
+            Create Article
+        </button>
     </form>
 </div>

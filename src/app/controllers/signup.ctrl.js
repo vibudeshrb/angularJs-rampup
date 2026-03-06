@@ -43,6 +43,7 @@ angular.module('articleManagement').controller('signupCtrl', [
 
         signup.registerUser = function () {
             if (signup.valid()) {
+                signup.isLoading = true;
                 userService
                     .registerUser(signup.user)
                     .then(function (res) {
@@ -53,6 +54,9 @@ angular.module('articleManagement').controller('signupCtrl', [
                     })
                     .catch(function (err) {
                         snackbarFactory.trigger(err.data.message, 'error');
+                    })
+                    .finally(function () {
+                        signup.isLoading = false;
                     });
             }
         };

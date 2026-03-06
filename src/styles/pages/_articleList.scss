@@ -11,7 +11,7 @@
         background-color: rgba($color-bg, 0.95);
         backdrop-filter: blur(8px);
         position: sticky;
-        top: pxToRem(0);
+        top: $navbar-height;
         z-index: 10;
     }
 
@@ -42,6 +42,7 @@
             font-style: italic;
         }
     }
+
     &__grid {
         @include flex-center;
         flex-direction: column;
