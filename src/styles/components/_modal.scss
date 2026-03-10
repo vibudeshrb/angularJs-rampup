@@ -1,0 +1,83 @@
+@use '../abstracts' as *;
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__backdrop {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.45);
+        z-index: -1;
+    }
+
+    &__dialog {
+        position: relative;
+        background-color: $color-bg;
+        border-radius: pxToRem(12);
+        box-shadow: 0 pxToRem(8) pxToRem(32) rgba(0, 0, 0, 0.2);
+        width: pxToRem(420);
+        overflow: hidden;
+    }
+
+    &__header {
+        padding: pxToRem(20, 24);
+        border-bottom: pxToRem(1) solid $color-border;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: pxToRem(18);
+        font-weight: $font-weight-bold;
+        color: $color-primary;
+    }
+
+    &__close {
+        font-size: pxToRem(22);
+        line-height: 1;
+        color: $color-text;
+        padding: 0 pxToRem(4);
+        transition: color 0.15s ease;
+
+        &:hover {
+            color: $color-accent;
+        }
+    }
+
+    &__body {
+        padding: pxToRem(20, 24);
+    }
+
+    &__message {
+        margin: 0;
+        font-size: pxToRem(14);
+        line-height: $line-height-base;
+        color: $color-text;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: flex-end;
+        padding: pxToRem(16, 24);
+        border-top: pxToRem(1) solid $color-border;
+    }
+
+    &__btn {
+        background-color: $color-primary;
+        color: $color-text-light;
+        border: pxToRem(1) solid $color-primary;
+        border-radius: pxToRem(4);
+        padding: pxToRem(8, 16);
+        font-size: pxToRem(14);
+        font-weight: $font-weight-bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: $color-secondary;
+            border-color: $color-secondary;
+        }
+    }
+}

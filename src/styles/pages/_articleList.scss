@@ -1,0 +1,66 @@
+@use '../abstracts' as *;
+
+.article-list {
+    max-width: pxToRem(1200);
+    margin: 0 auto;
+    padding: pxToRem(40, 24);
+    min-height: 100vh;
+
+    &__header {
+        padding-bottom: pxToRem(16);
+        background-color: rgba($color-bg, 0.95);
+        backdrop-filter: blur(8px);
+        position: sticky;
+        top: pxToRem(0);
+        z-index: 10;
+    }
+
+    &__title {
+        font-size: pxToRem(32);
+        font-weight: 700;
+    }
+
+    &__search {
+        margin-bottom: pxToRem(20);
+        padding: pxToRem(10, 0);
+        border-radius: pxToRem(12);
+    }
+
+    &__search-input {
+        width: 100%;
+        padding: pxToRem(14, 18);
+        font-size: pxToRem(16);
+        border-radius: pxToRem(12);
+        border: pxToRem(1) solid rgba($color-text, 0.1);
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+        }
+
+        &::placeholder {
+            font-style: italic;
+        }
+    }
+    &__grid {
+        @include flex-center;
+        flex-direction: column;
+        margin-top: pxToRem(10);
+        gap: pxToRem(24);
+        align-items: stretch;
+    }
+
+    &__empty {
+        text-align: center;
+        padding: pxToRem(80);
+        border-radius: pxToRem(16);
+        font-style: italic;
+    }
+
+    &__sentinel {
+        height: pxToRem(60);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

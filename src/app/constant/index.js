@@ -3,6 +3,7 @@ const constant = {
     templateUrl: {
         signup: 'src/app/views/signup.html',
         login: 'src/app/views/login.html',
+        articleList: 'src/app/views/articleList.html',
         articleCreate: 'src/app/views/articleCreate.html',
         articleDetail: 'src/app/views/articleDetail.html'
     },
@@ -12,15 +13,18 @@ const constant = {
         signup: 'signup',
         login: 'login',
         article: 'articles',
+        articleList: 'articles.list',
         articleCreate: 'articles.create',
         articleDetail: 'articles.detail'
     },
     url: {
+        root: '',
         home: '/home',
         dashboard: '/dashboard',
         signup: '/signup',
         login: '/login',
         article: '/articles',
+        articleList: '',
         articleCreate: '/create',
         articleDetail: '/:id'
     },
